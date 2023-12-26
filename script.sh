@@ -1,15 +1,15 @@
 #!/bin/bash
 # Update the package repository
-sudo yum update -y
+sudo apt-get update -y
 
 # Install Apache2
-sudo yum install httpd -y
+sudo apt-get install apache2 -y
 
 # Start Apache2 service
-sudo service httpd start
+sudo service apache2 start
 
 # Enable Apache2 to start on boot
-sudo chkconfig httpd on
+sudo systemctl enable apache2
 
 # Get the private IP address of the instance
 PRIVATE_IP=$(curl ifconfig.me)
@@ -21,4 +21,4 @@ echo "<html><head><title>My Apache Server</title></head><body><h1>Welcome to My 
 sudo chmod 644 /var/www/html/index.html
 
 # Restart Apache to apply changes
-sudo service httpd restart
+sudo service apache2 restart
